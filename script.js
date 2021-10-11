@@ -1,4 +1,6 @@
-function quote(){
-    document.getElementById("quote").style.display = 'block';
+function youtube()
+{
+    document.getElementById("youtubelink").style.display = 'block';
 }
+
 
