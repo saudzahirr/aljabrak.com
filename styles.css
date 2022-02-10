@@ -1,17 +1,25 @@
 body {
     background-color: black;
   }
+  
   img {
-      height: 250px;
-      width: 250px;
-      text-align: center;
-  }
-  h1 {
-    color: white;
+    height: 250px;
+    width: 250px;
     text-align: center;
   }
-  
+
+  h1 {
+    color: white;
+    font-style: serif;
+    font-family: sans-serif;
+    font-size: 70px;
+    text-align: center;
+  }
+
   p {
-    font-family: Georgia;
-    font-size: 200px;
+    color: white;
+    font-style: normal;
+    font-family: sans-serif;
+    font-size: 50px;
+    text-align: center;
   }
