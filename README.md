@@ -1,6 +1,5 @@
 # aljabrak.com
 "If you can't explain it simply, you don't understand it well enough."
-
 <br/>
 <br/>
 [<img align="left" alt="codeSTACKr.com" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](www.aljabrak.com)
