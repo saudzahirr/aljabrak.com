@@ -9,4 +9,5 @@
 [<img align="left" alt="codeSTACKr | Reddit"  width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/reddit.svg" />](https://www.reddit.com/user/aljabrak)
 [<img align="left" alt="codeSTACKr | Facebook" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/facebook.svg" />](https://web.facebook.com/aljabrak)
 [<img align="left" alt="codeSTACKr | TikTok" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/tiktok.svg" />](https://www.tiktok.com/@aljabrak?lang=en)
+[<img align="left" alt="codeSTACKr | TikTok" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/patreon.svg" />](https://www.patreon.com/user?u=56278963&fan_landing=true)
 <br/>
