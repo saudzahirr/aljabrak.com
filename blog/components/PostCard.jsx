@@ -6,7 +6,7 @@ const PostCard = ({ post }) => {
     <div className="flex flex-col w-full bg-white rounded-md lg:m-6 sm:mx-2 sm:my-3 m-3 ">
       <div className="m-2">
         <img
-          className=" shadow-lg rounded-sm"
+          className=" shadow-lg rounded-sm w-full"
           src={post.featuredImage.url}
           alt={post.title}
         />
