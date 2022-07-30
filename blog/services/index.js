@@ -72,7 +72,6 @@ export const getPostDetails = async (slug) => {
 };
 
 export const getRecentPosts = async () => {
-  const graphqlClient = new GraphQLClient(graphqlAPI);
   const query = gql`
     query GetPostDetails() {
       posts(orderBy: createdAt_DESC, last: 3) {
@@ -126,4 +125,29 @@ export const getCategories = async ()=>{
   const result = await request(graphqlAPI, query);
 
   return result.categories;
+}
+
+export const submitComment = async(obj)=>{
+  const response = await fetch("/api/comments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+  return response.json();
+}
+
+export const getPostComments = async (slug) => {
+  const query = gql`
+    query getPostComments($slug: String!) {
+      comments(where: { post: { slug: $slug } }) {
+        comment
+        createdAt
+        name
+      }
+    }
+  `;
+  const result = await request(graphqlAPI,query,{slug})
+  return result.comments
 }

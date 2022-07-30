@@ -6,7 +6,7 @@ const Categories = () => {
   useEffect(()=>{
     getCategories().then(result => {
       setCategories(result)
-  },[])})
+  })},[])
   return (
     <div className='text-black bg-white rounded-lg shadow-sm p-4 '>
       <h1 className='text-xl font-bold mb-3 py-4 px-1 border-b-2' >Categories</h1>
