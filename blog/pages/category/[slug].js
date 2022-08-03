@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { getCategoricalPosts, getCategories } from '../../services'
 import { PostCard, PostWidget, Categories } from "../../components";
-function CategoricalPosts({posts,slug}) {
+function CategoricalPosts({posts}) {
 //   const [showposts,setShowPosts]=useState(posts)
 //   console.log(posts)
 //   const handleSearch=(e)=>{
@@ -38,11 +38,16 @@ function CategoricalPosts({posts,slug}) {
 }
 
 export async function getStaticProps ({params}) {
-    const posts = await getCategoricalPosts(params.slug);
+    const result = await getCategoricalPosts(params.slug);
+    if(!result){
+      return{
+        notFound: true,
+        revalidate:10
+      }
+    }
     return {
         props: {
-            posts,
-            slug: params.slug
+            posts: result.posts,
         },
         revalidate: 10,
     }
@@ -50,7 +55,7 @@ export async function getStaticProps ({params}) {
 
 export async function getStaticPaths() {
     const categories = await getCategories();
-
+    
     return {
         paths: categories.map(({slug}) => ({params: {slug}})),
         fallback: 'blocking',

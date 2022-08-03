@@ -116,7 +116,7 @@ export const getSimilarPosts = async (categories, slug) => {
 export const getCategories = async ()=>{
   const query = gql`
     query MyQuery {
-      categories {
+      categories(last: 30, orderBy: updatedAt_DESC) {
         slug
         name
         createdAt
@@ -182,5 +182,5 @@ export const getCategoricalPosts= async (slug) =>{
     }
   `;
    const result = await request(graphqlAPI,query,{slug})
-   return result.category.posts
+   return result.category
 }

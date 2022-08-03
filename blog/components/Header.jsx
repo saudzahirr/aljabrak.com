@@ -12,7 +12,7 @@ const Header = () => {
   },[])
   return (
     <div className="container mx-auto px-10 mb-8">
-      <div className="border-b w-full inline-block border-blue-400 py-3">
+      <div className="border-b w-full inline-block border-white py-3">
         <div className="md:float-left block ">
           <Link href="/">
             {/* <span className="text-4xl font-bold cursor-pointer text-gray-200 hover:text-gray-300 duration-300">

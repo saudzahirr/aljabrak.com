@@ -32,6 +32,12 @@ function PostDetails({ post }) {
 }
 export async function getStaticProps({ params }) {
   const post = await getPostDetails(params.slug);
+  if(!post){
+    return {
+      notFound: true,
+      revalidate:10
+    }
+  }
   return {
     props: {
       post,

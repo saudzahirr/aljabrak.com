@@ -14,10 +14,10 @@ const PostDetail = ({ post }) => {
                 <Image 
                     src={post.featuredImage.url}
                     alt={post.title}
-                    className='object-cover w-full h-full'
-                    layout='intrinsic'
-                    width='800'
-                    height='400'
+                    className='object-fit w-full h-full'
+                    layout='responsive'
+                    width='850'
+                    height='500'
                     unoptimized
                 />
             </div>
