@@ -1,8 +1,13 @@
 import { getPostDetails, getPosts } from "../../services";
 import Head from "next/head";
+import {useRouter} from 'next/router'
 import { Categories, PostWidget,PostDetail,Author,CommentsForm,Comments } from "../../components";
 
 function PostDetails({ post }) {
+  const router = useRouter()
+  if(router.isFallback){ //to be implemented now 
+    return <h3 className="text-2xl"> Loading......</h3>
+  }
    return (
     <div>
       <Head>
@@ -50,7 +55,7 @@ export async function getStaticPaths() {
   const posts = await getPosts();
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: 'blocking',
+    fallback: true,
   };
 }
 export default PostDetails;
