@@ -6,7 +6,7 @@ export const getPosts = async () => {
   const graphqlClient = new GraphQLClient(graphqlAPI);
   const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(last: 100, orderBy: createdAt_DESC) {
         edges {
           node {
             author {
@@ -74,7 +74,7 @@ export const getPostDetails = async (slug) => {
 export const getRecentPosts = async () => {
   const query = gql`
     query GetPostDetails() {
-      posts(orderBy: createdAt_DESC, last: 3) {
+      posts(orderBy: createdAt_ASC, last: 3) {
     featuredImage {
       url
     }
@@ -119,6 +119,7 @@ export const getCategories = async ()=>{
       categories {
         slug
         name
+        createdAt
       }
     }
   `;
@@ -150,4 +151,36 @@ export const getPostComments = async (slug) => {
   `;
   const result = await request(graphqlAPI,query,{slug})
   return result.comments
+}
+
+export const getCategoricalPosts= async (slug) =>{
+  const query = gql`
+    query getCategorical($slug: String!) {
+      category(where: { slug: $slug }) {
+        posts{
+            author {
+              bio
+              id
+              name
+              photo {
+                url
+              }
+            }
+            createdAt
+            excerpt
+            slug
+            title
+            categories {
+              name
+              slug
+            }
+            featuredImage {
+              url
+            }
+          }
+      }
+    }
+  `;
+   const result = await request(graphqlAPI,query,{slug})
+   return result.category.posts
 }

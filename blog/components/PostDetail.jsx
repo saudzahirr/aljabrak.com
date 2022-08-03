@@ -1,22 +1,39 @@
 import React from 'react'
 import moment from 'moment'
 import { RichText } from '@graphcms/rich-text-react-renderer'
-
+import Image from 'next/image'
 const PostDetail = ({ post }) => {
     return (
-        <div className='bg-white shadow-lg rounded-lg lg:p-8 p-4 pb-12 mb-8'>
+        <div className='bg-white shadow-lg mt-6 rounded-lg lg:p-8 p-4 pb-12 mb-8'>
             <div className='relative overflow-hidden shadow-md mb-6'>
-                <img
+                {/* <img
                     src={post.featuredImage.url}
                     alt={post.title}
-                    className='object-top w-full h-full rounded-t-lg'
+                    className='object-top w-full h-full rounded-lg'
+                /> */}
+                <Image 
+                    src={post.featuredImage.url}
+                    alt={post.title}
+                    className='object-cover w-full h-full'
+                    layout='intrinsic'
+                    width='800'
+                    height='400'
+                    unoptimized
                 />
             </div>
             <div className='px-4 lg:px-0'>
                 <div className='flex flex-row items-center'>
                     <div>
-                        <img
+                        {/* <img
                             className="rounded-full h-[30px] w-[30px]"
+                            src={post.author.photo.url}
+                            alt={post.author.name}
+                        /> */}
+                        <Image 
+                            className="rounded-full"
+                            width='30'
+                            height='30'
+                            layout='intrinsic'
                             src={post.author.photo.url}
                             alt={post.author.name}
                         />
@@ -50,12 +67,20 @@ const PostDetail = ({ post }) => {
                     h1: ({ children }) => <h1 className="text-black text-xl text-center font-bold">{children}</h1>,
                     bold: ({ children }) => <strong>{children}</strong>,
                     img: ({ src, title, width, height, mimeType, altText }) => (<div>
-                        <img
+                        {/* <img
                             src={src}
                             width={width}
                             height={height}
                             alt={altText}
-                            className='rounded-lg lg:my-3 sm:my-2'
+                            className='rounded-lg lg:my-3 my-2'
+                        /> */}
+                        <Image
+                            src={src}
+                            width={width}
+                            height={height}
+                            alt={altText}
+                            layout='intrinsic'
+                            className='rounded-lg lg:my-3 my-2'
                         />
                     </div>),
                     a: ({ children, openInNewTab, href, rel, ...rest }) => {
@@ -64,7 +89,7 @@ const PostDetail = ({ post }) => {
                                 <a
                                     href={href}
                                     target={openInNewTab ? '_blank' : '_self'}
-                                    rel={rel || 'noopener noreferrer'}
+                                    rel='noopener noreferrer'
                                     {...rest}
                                 >
                                     {children}
