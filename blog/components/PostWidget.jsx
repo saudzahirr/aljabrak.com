@@ -46,7 +46,7 @@ const PostWidget = ({ categories,slug }) => {
                </div>
               </Link>
             </div>
-            <div className='flex-grow flex flex-col text-sm mr-3 font-semibold'>
+            <div className='flex-grow flex flex-col text-base mr-3 font-semibold'>
               <p className='underline'><Link href={`/post/${recent.slug}`}>{recent.title}</Link></p>
               <span className="text-gray-500 text-xs align-middle">
                 Published: {moment(recent.createdAt).format("MMM DD, YYYY")}

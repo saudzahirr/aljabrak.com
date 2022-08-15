@@ -8,7 +8,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto';
+  // font-family: Roboto;
+  font-family: sans-serif;
 
   &:before {
     content: '';
@@ -65,4 +66,22 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.slide{
+  &::before{
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+}
+
+.rec-arrow-right, .rec-arrow-left{
+  background-color: rgb(5, 104, 191) !important;
+  &:hover{
+    transform: scale(1.05);
+  }
 }

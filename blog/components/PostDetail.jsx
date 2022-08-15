@@ -1,6 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 import { RichText } from '@graphcms/rich-text-react-renderer'
+import 'katex/dist/katex.min.css'
+import Latex from 'react-latex-next'
 import Image from 'next/image'
 const PostDetail = ({ post }) => {
     return (
@@ -96,7 +98,25 @@ const PostDetail = ({ post }) => {
                                 </a>
                             );
                         }
-                    }
+                    },
+                    video: ({ src, title, width, height}) =>(
+                        <video width={width} height={height} className='rounded-lg lg:my-3 my-2' controls>
+                            <source src={src} type="video/mp4"/>
+                            {title}
+                         </video>
+                    ),
+                    code_block: ({children}) => (
+                        <pre className='border-[1px] rounded-lg block border-black'>
+                            <code className=''>
+                                {children}
+                            </code>
+                        </pre>
+                    ),
+                    h4: ({children}) =>
+                        {
+                         const text = children.props.content[0].text
+                        return <div className='inline-block'><Latex>{text}</Latex></div>
+                        }
 
                     }}
                     />

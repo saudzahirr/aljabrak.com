@@ -46,7 +46,7 @@ const CommentsForm = ({slug}) => {
     }
   return (
     <div className='bg-white shadow-lg p-8 pb-12 mb-8 rounded-lg'>
-        <h3 className='text-xl font-semibold pb-4 mb-8 border-b-2' >Leave a Comment</h3>
+        <h3 className='text-xl font-bold pb-4 mb-8 border-b-2' >Leave a Comment</h3>
         <div className="grid grid-cols-1 mb-4 gap-4">
             <textarea ref={commentEl} 
                 className='p-4 outline-none text-gray-700 w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100'
