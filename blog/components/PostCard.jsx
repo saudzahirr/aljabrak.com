@@ -1,24 +1,41 @@
 import React from "react";
 import Link from "next/link";
 import moment from "moment";
+import Image from 'next/image'
 const PostCard = ({ post }) => {
   return (
     <div className="flex flex-col w-full bg-white rounded-md lg:m-6 sm:mx-2 sm:my-3 m-3 ">
       <div className="m-2">
-        <img
-          className=" shadow-lg rounded-sm"
+        <Image
+          unoptimized
+          className="shadow-lg rounded-sm w-full"
           src={post.featuredImage.url}
           alt={post.title}
+          width='1000'
+          height='550px'
         />
+        {/* <img
+          className="shadow-lg rounded-sm w-full"
+          src={post.featuredImage.url}
+          alt={post.title}
+        /> */}
       </div>
       <div className="text-black w-fit self-center inline-block text-xl text-center align-middle font-bold transition duration-300 hover:text-gray-700">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </div>
       <div className="flex flex-row items-center justify-center self-center mb-4 p-4">
-        <img
+        {/* <img
           className="rounded-full h-[30px] w-[30px]"
           src={post.author.photo.url}
           alt={post.author.name}
+        /> */}
+        <Image
+          unoptimized
+          className="rounded-full"
+          src={post.author.photo.url}
+          alt={post.author.name}
+          height='30'
+          width='30'
         />
         <p className="text-base  ml-3 font-normal">{post.author.name} </p>
         <div className="font-normal ml-4 self-center text-gray-700">

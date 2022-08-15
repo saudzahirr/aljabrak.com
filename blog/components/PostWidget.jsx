@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { getRecentPosts,getSimilarPosts } from '../services'
+import Image from 'next/image';
 import moment from 'moment';
 import Link from 'next/link';
 
@@ -15,23 +16,34 @@ const PostWidget = ({ categories,slug }) => {
         setRelatedPosts(result);
       });
     }
-  }, [slug]);
+  }, [categories,slug]);
   return (
-    <div className='mt-6 bg-white shadow-lg rounded-lg flex flex-col mb-10 p-3 justify-center'>
+    <div className='mt-6 bg-white shadow-lg rounded-lg flex flex-col mb-5 p-3 justify-center'>
       <h1 className='text-xl w-full font-bold self-start p-2 text-black border-b-2'>
         {slug? 'Related Posts' :'Recent Posts'}
         </h1>
       {
-        relatedPosts.map((recent)=> (
-          <div className='flex w-full flex-row items-center justify-center m-4' key={recent.title}>
-            <div className='mr-3' >
-              <Link href={`/post/${recent.slug}`}>
-              <img 
+       relatedPosts.map((recent)=> (
+          <div className='flex w-full flex-row items-center justify-center m-4' key={recent.createdAt}>
+            <div className='-ml-2 mr-3 w-fit h-fit hover:scale-[1.2] duration-200' >
+              <Link href={`/post/${recent.slug}`} passHref>
+              {/* <img 
                 className='rounded-lg cursor-pointer hover:scale-105 duration-150 shadow-sm'
                 height='100px'
                 width='100px' 
+                alt={recent.title}
                 src={recent.featuredImage.url}
+              /> */}
+              <div>
+              <Image 
+              className='rounded-lg cursor-pointer shadow-sm'
+              layout='fixed'
+              height='60'
+              width='100'
+              alt={recent.title}
+              src={recent.featuredImage.url}
               />
+               </div>
               </Link>
             </div>
             <div className='flex-grow flex flex-col text-base mr-3 font-semibold'>

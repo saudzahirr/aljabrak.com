@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  // font-family: Roboto;
+  font-family: sans-serif;
 
   &:before {
     content: '';
@@ -17,7 +18,8 @@ body {
     height: 100vh;
     //background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
     // background: #D3D3D3;
-    background-image: url("../public/cover.jpg");
+    // background-image: url("../public/Logo.png");
+    background: linear-gradient(black,rgba(0,0,0,0.43));
     position: fixed;
     left: 0;
     top: 0;
@@ -64,4 +66,22 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.slide{
+  &::before{
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+}
+
+.rec-arrow-right, .rec-arrow-left{
+  background-color: rgb(5, 104, 191) !important;
+  &:hover{
+    transform: scale(1.05);
+  }
 }

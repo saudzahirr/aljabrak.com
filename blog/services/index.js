@@ -6,7 +6,7 @@ export const getPosts = async () => {
   const graphqlClient = new GraphQLClient(graphqlAPI);
   const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(last: 100, orderBy: createdAt_DESC) {
         edges {
           node {
             author {
@@ -72,10 +72,9 @@ export const getPostDetails = async (slug) => {
 };
 
 export const getRecentPosts = async () => {
-  const graphqlClient = new GraphQLClient(graphqlAPI);
   const query = gql`
     query GetPostDetails() {
-      posts(orderBy: createdAt_DESC, last: 3) {
+      posts(orderBy: createdAt_ASC, last: 3) {
     featuredImage {
       url
     }
@@ -117,13 +116,71 @@ export const getSimilarPosts = async (categories, slug) => {
 export const getCategories = async ()=>{
   const query = gql`
     query MyQuery {
-      categories {
+      categories(last: 30, orderBy: updatedAt_DESC) {
         slug
         name
+        createdAt
       }
     }
   `;
   const result = await request(graphqlAPI, query);
 
   return result.categories;
+}
+
+export const submitComment = async(obj)=>{
+  const response = await fetch("/api/comments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+  return response.json();
+}
+
+export const getPostComments = async (slug) => {
+  const query = gql`
+    query getPostComments($slug: String!) {
+      comments(where: { post: { slug: $slug } }) {
+        comment
+        createdAt
+        name
+      }
+    }
+  `;
+  const result = await request(graphqlAPI,query,{slug})
+  return result.comments
+}
+
+export const getCategoricalPosts= async (slug) =>{
+  const query = gql`
+    query getCategorical($slug: String!) {
+      category(where: { slug: $slug }) {
+        posts{
+            author {
+              bio
+              id
+              name
+              photo {
+                url
+              }
+            }
+            createdAt
+            excerpt
+            slug
+            title
+            categories {
+              name
+              slug
+            }
+            featuredImage {
+              url
+            }
+          }
+      }
+    }
+  `;
+   const result = await request(graphqlAPI,query,{slug})
+   return result.category
 }
